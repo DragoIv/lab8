@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .longline {
+        width: 120%;
+      }
+    </style>
+  </head>
+  <body>
+    <div align="left">
+      <h1>Задание 1</h1>
+      <h5>
+        15. Написать программу на HTML и JavaScript для следующего задания: На
+        экране в форме вводятся 10 вещественных чисел. Определите: содержит ли
+        последовательность хотя бы одну пару равных соседних элементов.
+        Используйте объект Array, Date и String.
+      </h5>
+      <table>
+        <tr>
+          Введите вещественные числа
+        </tr>
+        <tr>
+          <td>1 число</td>
+          <td>
+            <input onchange="check_same_element()" type="text" id="one" />
+          </td>
+        </tr>
+        <tr>
+          <td>2 число</td>
+          <td>
+            <input onchange="check_same_element()" type="text" id="two" />
+          </td>
+        </tr>
+        <tr>
+          <td>3 число</td>
+          <td>
+            <input onchange="check_same_element()" type="text" id="three" />
+          </td>
+        </tr>
+        <tr>
+          <td>4 число</td>
+          <td>
+            <input onchange="check_same_element()" type="text" id="four" />
+          </td>
+        </tr>
+        <tr>
+          <td>5 число</td>
+          <td>
+            <input onchange="check_same_element()" type="text" id="five" />
+          </td>
+        </tr>
+        <tr>
+          <td>6 число</td>
+          <td>
+            <input onchange="check_same_element()" type="text" id="six" />
+          </td>
+        </tr>
+        <tr>
+          <td>7 число</td>
+          <td>
+            <input onchange="check_same_element()" type="text" id="seven" />
+          </td>
+        </tr>
+        <tr>
+          <td>8 число</td>
+          <td>
+            <input onchange="check_same_element()" type="text" id="eight" />
+          </td>
+        </tr>
+        <tr>
+          <td>9 число</td>
+          <td>
+            <input onchange="check_same_element()" type="text" id="nine" />
+          </td>
+        </tr>
+        <tr>
+          <td>10 число</td>
+          <td>
+            <input onchange="check_same_element()" type="text" id="ten" />
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>Результат:</td>
+          <td><input class="longline" type="text" id="res" /></td>
+        </tr>
+      </table>
+      <h1>Задание 2</h1>
+      <h5>
+        15. Создать пользовательский объект Верхняя одежда. При создании
+        собственного объекта задайте не менее 2-х свойств. Создать в скрипте 7
+        экземпляров данного объекта и вывести эти данные на страницу.
+      </h5>
+      <table style="border-collapse: collapse">
+        <tr>
+          <td style="border: 1px solid black">Тип одежды</td>
+          <td style="border: 1px solid black">Цвет одежды</td>
+          <td style="border: 1px solid black">Ввод</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid black">
+            <input type="text" id="type" />
+          </td>
+          <td style="border: 1px solid black">
+            <input type="text" id="color" />
+          </td>
+          <td style="border: 1px solid black">
+            <button id="btn" onclick="Outerwear.prototype.checkState()">
+              Ввод одежды
+            </button>
+          </td>
+        </tr>
+      </table>
+      <table id="tab"></table>
+      <br />
+    </div>
+    <script>
+      function check_same_element() {
+        var ar = new Array(10);
+        ar[0] = parseFloat(document.getElementById("one").value);
+        ar[1] = parseFloat(document.getElementById("two").value);
+        ar[2] = parseFloat(document.getElementById("three").value);
+        ar[3] = parseFloat(document.getElementById("four").value);
+        ar[4] = parseFloat(document.getElementById("five").value);
+        ar[5] = parseFloat(document.getElementById("six").value);
+        ar[6] = parseFloat(document.getElementById("seven").value);
+        ar[7] = parseFloat(document.getElementById("eight").value);
+        ar[8] = parseFloat(document.getElementById("nine").value);
+        ar[9] = parseFloat(document.getElementById("ten").value);
+        var ar_color = new Array("red", "blue", "yellow", "green", "orange");
+        var bool = false;
+        for (let i = 1; i < 9; i++) {
+          if (ar[i] == ar[i + 1] || ar[i] == ar[i - 1]) {
+            bool = true;
+            break;
+          }
+        }
+        if (bool) {
+          document.getElementById("res").value = "есть одинаковые элементы";
+        } else {
+          document.getElementById("res").value = "нету одинаковых элементов";
+        }
+      }
+
+      // Создание пользовательского объекта "Верхняя одежда"
+      function Outerwear() {
+        var type = parseFloat(document.getElementById("type").value);
+        var color = parseFloat(document.getElementById("color").value);
+      }
+
+      // Метод для проверки состояния верхней одежды
+      Outerwear.prototype.checkState = function () {
+        var table = document.getElementById("tab");
+
+        for (var i = 0; i < 1; i++) {
+          var row = table.insertRow();
+
+          for (var j = 0; j < 2; j++) {
+            var cell = row.insertCell();
+            row.value = "text";
+            const input = document.createElement("input");
+            input.type = "text";
+            document.body.append(input);
+            if (j == 0) {
+              input.value = "Тип: " + document.getElementById("type").value;
+            } else {
+              input.value = "Цвет: " + document.getElementById("color").value;
+            }
+          }
+        }
+        const br = document.createElement("br");
+        document.body.append(br);
+      };
+
+      // Метод для изменения цвета верхней одежды
+      Outerwear.prototype.changeColor = function (newColor) {
+        this.color = newColor;
+      };
+
+      // Метод для получения информации о верхней одежде
+      Outerwear.prototype.getInfo = function () {
+        return "Это " + this.type + " верхняя одежда, цвет: " + this.color;
+      };
+    </script>
+  </body>
+</html>
